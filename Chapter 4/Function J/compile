@@ -1,0 +1,12 @@
+gfortran -c  -O4 drand.f90
+gfortran -c  -O4 mergesort.f90
+gfortran -c  -O4 geometry.f90
+gfortran -c  -O4 geompack2.f90
+gfortran -c  -O4 vorintpols.f90
+gfortran -c -O4 optvormod.f90
+gfortran -c -O4 spg2.f90
+
+gfortran -c -O4 optvorma-mod-test.f90
+gfortran mergesort.o drand.o geometry.o geompack2.o vorintpols.o spg2.o optvormod.o optvorma-mod-test.o -o optvorma-mod-test
+
+
