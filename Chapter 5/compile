@@ -1,0 +1,38 @@
+gfortran -c  -O4 drand.f90
+gfortran -c  -O4 mergesort.f90
+gfortran -c  -O4 geometry.f90
+gfortran -c  -O4 geompack2.f90
+gfortran -c  -O4 vorintpols.f90
+gfortran -c  -O4 optvormod2.f90
+gfortran -c  -O4 spg2.f90
+
+#! files for the L-BFGS-B method
+gfortran -c -O4 blas.f
+gfortran -c -O4 linpack.f
+gfortran -c -O4 routine.f
+gfortran -c -O4 timer.f
+
+
+#! Here we solve the problem using the L-BFGS-B method
+
+#! For this case the two cases, scaling or not can be solved with the same file. It is enough 
+#! to consider the logical variable scaled=.true. if the problem is scaled in the other case
+#! write scaled=.false.
+
+gfortran -c -O4 optvorma-bfgs-test.f90
+gfortran mergesort.o drand.o geometry.o geompack2.o vorintpols.o optvormod2.o routine.o linpack.o blas.o timer.o optvorma-bfgs-test.o -o optvorma-bfgs-test
+
+#! With this file you can solve all the problem for each J^i.
+gfortran -c -O4 optvorma-bfgsJ2.f90
+gfortran mergesort.o geometry.o geompack2.o vorintpols.o optvormod2.o routine.o linpack.o blas.o timer.o optvorma-bfgsJ2.o -o optvorma-bfgsJ2
+
+gfortran -c -O4 optvorma-regpol-test.f90
+gfortran mergesort.o drand.o geometry.o geompack2.o vorintpols.o spg2.o optvormod2.o optvorma-regpol-test.o -o optvorma-regpol-test
+
+gfortran -c -O4 optvorma-regpol.f90
+gfortran mergesort.o drand.o geometry.o geompack2.o vorintpols.o spg2.o optvormod2.o optvorma-regpol.o -o optvorma-regpol
+
+
+
+
+
