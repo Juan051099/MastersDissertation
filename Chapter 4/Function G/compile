@@ -25,8 +25,8 @@ gfortran mergesort.o drand.o geometry.o geompack2.o vorintpols.o spg2.o optvormo
 
 #! Here we solve the problem using the L-BFGS-B method
 
-#! For this case the two cases, scaling or not can be solved with the same file. It is enough 
-#! to consider the logical variable scaled=.true. if the problem is scaled in the other case
+#! For this case, the two cases scaling or not can be solved with the same file. It is enough 
+#! to consider the logical variable scaled=.true. if the problem is scaled, in the other case
 #! write scaled=.false.
 
 gfortran -c -O4 optvorma-bfgs-test.f90
